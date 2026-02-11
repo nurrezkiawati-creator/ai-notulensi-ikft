@@ -1,5 +1,14 @@
 import streamlit as st
 import requests
+st.image("https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png", width=120)
+
+st.markdown("""
+### DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL  
+Jl. Jenderal Gatot Subroto Kav. 52-53 Jakarta 12950  
+""")
+st.divider()
+
+
 
 st.title("AI Notulensi Rapat IKFT")
 
