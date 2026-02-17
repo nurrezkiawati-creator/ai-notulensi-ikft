@@ -1,20 +1,30 @@
 import streamlit as st
+# ===== HEADER RESMI KEMENPERIN =====
+
+col1, col2 = st.columns([1, 4])
+
+with col1:
+    st.image(
+        "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png",
+        width=100
+    )
+
+with col2:
+    st.markdown("""
+    <div style="line-height:1.4">
+        <b>KEMENTERIAN PERINDUSTRIAN REPUBLIK INDONESIA</b><br>
+        <b>DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL</b><br>
+        Jl. Jenderal Gatot Subroto Kav. 52-53 Jakarta 12950
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<hr style='border:2px solid black;'>", unsafe_allow_html=True)
 
 # =========================
 # HEADER KEMENPERIN
 # =========================
 
-st.image(
-    "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png",
-    width=120
-)
 
-st.markdown("""
-### DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL  
-Jl. Jenderal Gatot Subroto Kav. 52-53 Jakarta 12950  
-""")
-
-st.divider()
 
 st.title("AI Notulensi Rapat IKFT (Hybrid Mode)")
 
