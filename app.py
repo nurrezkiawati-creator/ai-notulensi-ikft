@@ -4,10 +4,7 @@ import streamlit as st
 col1, col2 = st.columns([1, 4])
 
 with col1:
-    st.image(
-        "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png",
-        width=100
-    )
+    st.image("logo_kemenperin.png", width=100)
 
 with col2:
     st.markdown("""
