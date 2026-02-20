@@ -5,9 +5,10 @@ col1, col2 = st.columns([1, 4])
 
 with col1:
     st.image(
-    "https://kemenperin.go.id/images/logo-kemenperin.png",
-    width=100
+    "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png",
+    width=120
 )
+
 
 
 with col2:
