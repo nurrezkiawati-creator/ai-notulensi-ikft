@@ -49,108 +49,105 @@ catatan = st.text_area("Catatan / Transkrip Kasar")
 
 if st.button("Generate Notulensi V2"):
 
-    
+    # =============================
+    # PROMPT MATRKS AKSI
+    # =============================
 
+    prompt_matrix = f"""
+    Anda adalah analis notulensi resmi instansi pemerintahan.
 
-# =============================
-# PROMPT MATRKS AKSI (STABIL)
-# =============================
+    Buat Matriks Aksi dari catatan rapat berikut.
 
-prompt_matrix = f"""
-Anda adalah analis notulensi resmi instansi pemerintahan.
+    Agenda Rapat: {judul}
 
-Buat Matriks Aksi dari catatan rapat berikut.
+    Identifikasi:
+    - Keputusan
+    - Tindak lanjut
+    - Penanggung jawab
+    - Deadline
 
-Agenda Rapat: {judul}
+    Jika tidak ada penanggung jawab tulis: Belum ditentukan
+    Jika tidak ada deadline tulis: Tidak disebutkan
 
-Identifikasi:
-- Keputusan
-- Tindak lanjut
-- Penanggung jawab
-- Deadline
+    WAJIB:
+    - Keluarkan HANYA JSON valid.
+    - Jangan tambahkan teks apapun di luar JSON.
 
-Jika tidak ada penanggung jawab tulis: Belum ditentukan
-Jika tidak ada deadline tulis: Tidak disebutkan
-
-WAJIB:
-- Keluarkan HANYA JSON valid.
-- Jangan tambahkan teks apapun di luar JSON.
-
-Format JSON:
-{{
-  "data": [
+    Format JSON:
     {{
-      "agenda_rapat": "",
-      "keputusan": "",
-      "tindak_lanjut": "",
-      "penanggung_jawab": "",
-      "deadline": "",
-      "status": "Belum Ditindaklanjuti"
+      "data": [
+        {{
+          "agenda_rapat": "",
+          "keputusan": "",
+          "tindak_lanjut": "",
+          "penanggung_jawab": "",
+          "deadline": "",
+          "status": "Belum Ditindaklanjuti"
+        }}
+      ]
     }}
-  ]
-}}
 
-Catatan:
-{catatan}
-"""
+    Catatan:
+    {catatan}
+    """
 
-response_matrix = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[{"role": "user", "content": prompt_matrix}],
-    temperature=0
-)
+    response_matrix = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt_matrix}],
+        temperature=0
+    )
 
-try:
-    matrix_json = response_matrix.choices[0].message.content
-    matrix_data = json.loads(matrix_json)
-    st.subheader("Matriks Aksi")
-    st.table(matrix_data["data"])
-except Exception as e:
-    st.error("Format Matriks tidak terbaca.")
-    st.text(response_matrix.choices[0].message.content)
+    try:
+        matrix_json = response_matrix.choices[0].message.content
+        matrix_data = json.loads(matrix_json)
+        st.subheader("Matriks Aksi")
+        st.table(matrix_data["data"])
+    except Exception as e:
+        st.error("Format Matriks tidak terbaca.")
+        st.text(response_matrix.choices[0].message.content)
 
     # =============================
     # PROMPT NOTULEN RESMI
     # =============================
 
     prompt_notulen = f"""
-Anda adalah notulis profesional instansi pemerintahan.
+    Anda adalah notulis profesional instansi pemerintahan.
 
-Susun notulen resmi dengan struktur berikut:
+    Susun notulen resmi dengan struktur berikut:
 
-NOTULEN RAPAT
+    NOTULEN RAPAT
 
-Tanggal: {tanggal}
-Waktu: {waktu}
-Tempat: {tempat}
-Perihal: {judul}
-Pimpinan Rapat: {pimpinan}
+    Tanggal: {tanggal}
+    Waktu: {waktu}
+    Tempat: {tempat}
+    Perihal: {judul}
+    Pimpinan Rapat: {pimpinan}
 
-A. UMUM
-1. Pelaksanaan Rapat
-2. Tujuan Rapat
+    A. UMUM
+    1. Pelaksanaan Rapat
+    2. Tujuan Rapat
 
-B. LATAR BELAKANG
-(poin 1,2,3)
+    B. LATAR BELAKANG
+    (poin 1,2,3)
 
-C. PEMBAHASAN
-(dikelompokkan berdasarkan tema)
+    C. PEMBAHASAN
+    (dikelompokkan berdasarkan tema)
 
-D. REKOMENDASI DAN TINDAK LANJUT
-(bernomor dan formal)
+    D. REKOMENDASI DAN TINDAK LANJUT
+    (bernomor dan formal)
 
-Gunakan bahasa birokrasi formal.
-Jangan menambahkan informasi yang tidak ada dalam catatan.
+    Gunakan bahasa birokrasi formal.
+    Jangan menambahkan informasi yang tidak ada dalam catatan.
 
-Catatan Rapat:
-{catatan}
-"""
+    Catatan Rapat:
+    {catatan}
+    """
 
-    response_notulen = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt_notulen}],
-        temperature=0.2
-    )
+        response_notulen = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt_notulen}],
+            temperature=0.2
+        )
 
-    st.subheader("Notulen Resmi")
-    st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
+        st.subheader("Notulen Resmi")
+         st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
