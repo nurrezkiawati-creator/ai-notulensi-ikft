@@ -96,15 +96,23 @@ if st.button("Generate Notulensi V2"):
         messages=[{"role": "user", "content": prompt_matrix}],
         temperature=0
     )
+try:
+    matrix_json = response_matrix.choices[0].message.content
 
-    try:
-        matrix_json = response_matrix.choices[0].message.content
-        matrix_data = json.loads(matrix_json)
-        st.subheader("Matriks Aksi")
-        st.table(matrix_data["data"])
-    except Exception as e:
-        st.error("Format Matriks tidak terbaca.")
-        st.text(response_matrix.choices[0].message.content)
+    # Bersihkan markdown jika ada ```json
+    if matrix_json.strip().startswith("```"):
+        matrix_json = matrix_json.strip()
+        matrix_json = matrix_json.replace("```json", "")
+        matrix_json = matrix_json.replace("```", "")
+        matrix_json = matrix_json.strip()
+
+    matrix_data = json.loads(matrix_json)
+    
+    st.subheader("Matriks Aksi")
+    st.table(matrix_data["data"])
+except Exception as e:
+    st.error("Format Matriks tidak terbaca.")
+    st.text(response_matrix.choices[0].message.content)
 
     # =============================
     # PROMPT NOTULEN RESMI
