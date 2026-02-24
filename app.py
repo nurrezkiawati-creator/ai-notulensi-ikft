@@ -98,7 +98,7 @@ if st.button("Generate Notulensi V2"):
     )
     matrix_json = response_matrix.choices[0].message.content
 
-try:
+
     # Bersihkan markdown jika ada ```json
     if matrix_json.strip().startswith("```"):
         matrix_json = matrix_json.strip()
