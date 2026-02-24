@@ -142,12 +142,10 @@ if st.button("Generate Notulensi V2"):
     Catatan Rapat:
     {catatan}
     """
-
-        response_notulen = client.chat.completions.create(
+    response_notulen = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt_notulen}],
             temperature=0.2
         )
-
-        st.subheader("Notulen Resmi")
-         st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
+    st.subheader("Notulen Resmi")
+    st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
