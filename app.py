@@ -114,8 +114,7 @@ try:
 except Exception as e:
     st.error("Format Matriks tidak terbaca.")
     st.write("Output mentah dari AI:")
-    st.code(matrix_json)
-
+    st.code(response_matrix.choices[0].message.content)
     # =============================
     # PROMPT NOTULEN RESMI
     # =============================
