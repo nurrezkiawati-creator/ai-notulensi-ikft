@@ -1,7 +1,8 @@
 import streamlit as st
 from openai import OpenAI
 import json
-
+api_key = st.secrets["OPENAI_API_KEY"]
+client = OpenAI(api_key=api_key)
 # =============================
 # HEADER RESMI
 # =============================
@@ -40,7 +41,7 @@ mode = st.selectbox("Mode Rapat", ["Luring", "Daring"])
 peserta = st.text_area("Peserta Rapat")
 catatan = st.text_area("Catatan / Transkrip Kasar")
 
-api_key = st.text_input("API Key OpenAI", type="password")
+
 
 # =============================
 # GENERATE
@@ -48,11 +49,7 @@ api_key = st.text_input("API Key OpenAI", type="password")
 
 if st.button("Generate Notulensi V2"):
 
-    if api_key == "":
-        st.error("Masukkan API Key OpenAI terlebih dahulu.")
-        st.stop()
-
-    client = OpenAI(api_key=api_key)
+    
 
     # =============================
     # PROMPT MATRKS AKSI
