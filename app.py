@@ -51,11 +51,12 @@ if st.button("Generate Notulensi V2"):
 
     
 
-    # =============================
-    # PROMPT MATRKS AKSI
-    # =============================
 
-    prompt_matrix = f"""
+# =============================
+# PROMPT MATRKS AKSI (STABIL)
+# =============================
+
+prompt_matrix = f"""
 Anda adalah analis notulensi resmi instansi pemerintahan.
 
 Buat Matriks Aksi dari catatan rapat berikut.
@@ -71,34 +72,42 @@ Identifikasi:
 Jika tidak ada penanggung jawab tulis: Belum ditentukan
 Jika tidak ada deadline tulis: Tidak disebutkan
 
-Output format JSON list dengan struktur:
-[
-  {{
-    "agenda_rapat": "",
-    "keputusan": "",
-    "tindak_lanjut": "",
-    "penanggung_jawab": "",
-    "deadline": "",
-    "status": "Belum Ditindaklanjuti"
-  }}
-]
+WAJIB:
+- Keluarkan HANYA JSON valid.
+- Jangan tambahkan teks apapun di luar JSON.
+
+Format JSON:
+{{
+  "data": [
+    {{
+      "agenda_rapat": "",
+      "keputusan": "",
+      "tindak_lanjut": "",
+      "penanggung_jawab": "",
+      "deadline": "",
+      "status": "Belum Ditindaklanjuti"
+    }}
+  ]
+}}
 
 Catatan:
 {catatan}
 """
 
-    response_matrix = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt_matrix}],
-        temperature=0
-    )
+response_matrix = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": prompt_matrix}],
+    temperature=0
+)
 
-    try:
-        matrix_data = json.loads(response_matrix.choices[0].message.content)
-        st.subheader("Matriks Aksi")
-        st.table(matrix_data)
-    except:
-        st.warning("Format Matriks tidak terbaca. Periksa kembali prompt.")
+try:
+    matrix_json = response_matrix.choices[0].message.content
+    matrix_data = json.loads(matrix_json)
+    st.subheader("Matriks Aksi")
+    st.table(matrix_data["data"])
+except Exception as e:
+    st.error("Format Matriks tidak terbaca.")
+    st.text(response_matrix.choices[0].message.content)
 
     # =============================
     # PROMPT NOTULEN RESMI
