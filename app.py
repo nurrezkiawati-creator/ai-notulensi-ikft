@@ -111,10 +111,7 @@ try:
     st.subheader("Matriks Aksi")
     st.table(matrix_data["data"])
 
-except Exception as e:
-    st.error("Format Matriks tidak terbaca.")
-    st.write("Output mentah dari AI:")
-    st.code(response_matrix.choices[0].message.content)
+
     # =============================
     # PROMPT NOTULEN RESMI
     # =============================
