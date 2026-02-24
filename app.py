@@ -1,15 +1,18 @@
 import streamlit as st
-# ===== HEADER RESMI KEMENPERIN =====
+from openai import OpenAI
+import json
+
+# =============================
+# HEADER RESMI
+# =============================
 
 col1, col2 = st.columns([1, 4])
 
 with col1:
     st.image(
-    "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png",
-    width=120
-)
-
-
+        "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo_Kementerian_Perindustrian_Indonesia.png",
+        width=100
+    )
 
 with col2:
     st.markdown("""
@@ -22,93 +25,126 @@ with col2:
 
 st.markdown("<hr style='border:2px solid black;'>", unsafe_allow_html=True)
 
-# =========================
-# HEADER KEMENPERIN
-# =========================
+st.title("AI NOTULENSI RAPAT IKFT – V2 Professional")
 
-
-
-st.title("AI Notulensi Rapat IKFT (Hybrid Mode)")
-
-# =========================
+# =============================
 # INPUT
-# =========================
+# =============================
 
 tanggal = st.date_input("Tanggal Rapat")
-judul = st.text_input("Judul Rapat")
+judul = st.text_input("Judul / Agenda Rapat")
+waktu = st.text_input("Waktu")
+tempat = st.text_input("Tempat")
+pimpinan = st.text_input("Pimpinan Rapat")
+mode = st.selectbox("Mode Rapat", ["Luring", "Daring"])
 peserta = st.text_area("Peserta Rapat")
-catatan = st.text_area("Catatan / Transkrip Rapat")
+catatan = st.text_area("Catatan / Transkrip Kasar")
 
-# Optional API key (boleh dikosongkan)
-api_key = st.text_input("API Key OpenAI (Opsional)", type="password")
+api_key = st.text_input("API Key OpenAI", type="password")
 
-# =========================
-# BUTTON
-# =========================
+# =============================
+# GENERATE
+# =============================
 
-if st.button("Generate Notulensi"):
+if st.button("Generate Notulensi V2"):
 
-    # =========================
-    # MODE GRATIS (Template)
-    # =========================
     if api_key == "":
-        hasil = f"""
-NOTULENSI RAPAT  
-Direktorat Jenderal IKFT  
+        st.error("Masukkan API Key OpenAI terlebih dahulu.")
+        st.stop()
 
-Tanggal: {tanggal}  
-Judul: {judul}  
+    client = OpenAI(api_key=api_key)
 
-I. Pendahuluan  
-Rapat dilaksanakan dalam rangka membahas agenda terkait {judul}.
+    # =============================
+    # PROMPT MATRKS AKSI
+    # =============================
 
-II. Peserta Rapat  
-{peserta}
+    prompt_matrix = f"""
+Anda adalah analis notulensi resmi instansi pemerintahan.
 
-III. Pokok Pembahasan  
+Buat Matriks Aksi dari catatan rapat berikut.
+
+Agenda Rapat: {judul}
+
+Identifikasi:
+- Keputusan
+- Tindak lanjut
+- Penanggung jawab
+- Deadline
+
+Jika tidak ada penanggung jawab tulis: Belum ditentukan
+Jika tidak ada deadline tulis: Tidak disebutkan
+
+Output format JSON list dengan struktur:
+[
+  {{
+    "agenda_rapat": "",
+    "keputusan": "",
+    "tindak_lanjut": "",
+    "penanggung_jawab": "",
+    "deadline": "",
+    "status": "Belum Ditindaklanjuti"
+  }}
+]
+
+Catatan:
 {catatan}
-
-IV. Kesimpulan  
-Berdasarkan hasil pembahasan, diperlukan tindak lanjut sesuai hasil rapat.
-
-V. Tindak Lanjut  
-1. Koordinasi lanjutan antar unit terkait.  
-2. Penyusunan laporan perkembangan.  
 """
 
-    # =========================
-    # MODE AI (Jika API Ada)
-    # =========================
-    else:
-        from openai import OpenAI
-        client = OpenAI(api_key=api_key)
+    response_matrix = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt_matrix}],
+        temperature=0
+    )
 
-        prompt = f"""
-Susun notulensi rapat resmi Direktorat Jenderal IKFT
-dengan bahasa Indonesia formal dan sistematis.
+    try:
+        matrix_data = json.loads(response_matrix.choices[0].message.content)
+        st.subheader("Matriks Aksi")
+        st.table(matrix_data)
+    except:
+        st.warning("Format Matriks tidak terbaca. Periksa kembali prompt.")
 
-Data:
+    # =============================
+    # PROMPT NOTULEN RESMI
+    # =============================
+
+    prompt_notulen = f"""
+Anda adalah notulis profesional instansi pemerintahan.
+
+Susun notulen resmi dengan struktur berikut:
+
+NOTULEN RAPAT
+
 Tanggal: {tanggal}
-Judul: {judul}
-Peserta: {peserta}
+Waktu: {waktu}
+Tempat: {tempat}
+Perihal: {judul}
+Pimpinan Rapat: {pimpinan}
+
+A. UMUM
+1. Pelaksanaan Rapat
+2. Tujuan Rapat
+
+B. LATAR BELAKANG
+(poin 1,2,3)
+
+C. PEMBAHASAN
+(dikelompokkan berdasarkan tema)
+
+D. REKOMENDASI DAN TINDAK LANJUT
+(bernomor dan formal)
+
+Gunakan bahasa birokrasi formal.
+Jangan menambahkan informasi yang tidak ada dalam catatan.
 
 Catatan Rapat:
 {catatan}
-
-Struktur:
-1. Identitas Rapat
-2. Pendahuluan
-3. Pokok Pembahasan
-4. Kesimpulan
-5. Tindak Lanjut
 """
 
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": prompt}]
-        )
+    response_notulen = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt_notulen}],
+        temperature=0.2
+    )
 
-        hasil = response.choices[0].message.content
-
-    st.subheader("Hasil Notulensi")
-    st.text_area("Output", hasil, height=400)
+    st.subheader("Notulen Resmi")
+    st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
