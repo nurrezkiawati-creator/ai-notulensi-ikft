@@ -96,7 +96,7 @@ if st.button("Generate Notulensi V2"):
         messages=[{"role": "user", "content": prompt_matrix}],
         temperature=0
     )
-matrix_json = response_matrix.choices[0].message.content
+    matrix_json = response_matrix.choices[0].message.content
 
 try:
     # Bersihkan markdown jika ada ```json
