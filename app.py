@@ -1,8 +1,11 @@
 import streamlit as st
 from openai import OpenAI
 import json
+import whisper
+import tempfile
 api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
+whisper_model = whisper.load_model("base")
 if "generated" not in st.session_state:
     st.session_state.generated = False
 
