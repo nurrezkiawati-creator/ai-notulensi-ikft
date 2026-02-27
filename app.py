@@ -1,4 +1,15 @@
 import streamlit as st
+if "generated" not in st.session_state:
+    st.session_state.generated = False
+
+if "validated" not in st.session_state:
+    st.session_state.validated = False
+
+if "matrix_data" not in st.session_state:
+    st.session_state.matrix_data = None
+
+if "notulen_text" not in st.session_state:
+    st.session_state.notulen_text = ""
 # ===== HEADER RESMI KEMENPERIN =====
 
 col1, col2 = st.columns([1, 4])
