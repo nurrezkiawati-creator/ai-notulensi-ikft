@@ -3,6 +3,17 @@ from openai import OpenAI
 import json
 api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
+if "generated" not in st.session_state:
+    st.session_state.generated = False
+
+if "validated" not in st.session_state:
+    st.session_state.validated = False
+
+if "matrix_data" not in st.session_state:
+    st.session_state.matrix_data = None
+
+if "notulen_text" not in st.session_state:
+    st.session_state.notulen_text = ""
 # =============================
 # HEADER RESMI
 # =============================
