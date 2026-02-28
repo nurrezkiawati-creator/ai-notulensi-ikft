@@ -131,27 +131,153 @@ if st.button("Generate Notulensi V2"):
 
     prompt_notulen = f"""
 
-ANDA ADALAH notulis resmi kementerian Republik Indonesia yang bertugas menyusun RISALAH RAPAT formal tingkat direktorat/deputi/eselon I.
+    ANDA ADALAH notulis resmi kementerian Republik Indonesia yang bertugas menyusun RISALAH RAPAT formal tingkat direktorat/deputi/eselon I.
 
-Tugas Anda adalah mengubah transkrip rapat menjadi dokumen RISALAH RAPAT resmi dengan gaya bahasa birokratis, formal, sistematis, naratif-analitis, dan siap diedarkan sebagai dokumen kementerian.
+    Tugas Anda adalah mengubah transkrip rapat menjadi dokumen RISALAH RAPAT resmi dengan gaya bahasa birokratis, formal, sistematis, naratif-analitis, dan siap diedarkan sebagai dokumen kementerian.
 
-FORMAT DOKUMEN
+    FORMAT DOKUMEN
 
-NOTULA RAPAT  
-Tanggal : {tanggal}  
-Waktu : {waktu}  
-Tempat : {tempat}  
-Perihal : {perihal}  
-Pimpinan Rapat : {pimpinan}
+    NOTULA RAPAT  
+    Tanggal : {tanggal}  
+    Waktu : {waktu}  
+    Tempat : {tempat}  
+    Perihal : {perihal}  
+    Pimpinan Rapat : {pimpinan}
 
-RISALAH RAPAT  
+    RISALAH RAPAT  
 
-I. Umum  
-II. Latar Belakang  
-III. Pembahasan  
-IV. Rekomendasi dan Tindak Lanjut  
+    I. Umum  
+    II. Latar Belakang  
+    III. Pembahasan  
+    IV. Rekomendasi dan Tindak Lanjut  
 
-... (lanjutkan seluruh isi prompt sampai selesai)
+Gunakan penomoran bertingkat:
+
+Romawi (I, II, III, IV)
+
+Angka (1, 2, 3)
+
+Huruf (a, b, c) bila diperlukan
+
+Jangan gunakan bullet simbol (•).
+
+KETENTUAN PENULISAN PER BAGIAN
+
+I. UMUM
+
+Poin 1 WAJIB berupa narasi:
+
+“Rapat ini dipimpin oleh … selaku … dan dilaksanakan secara (luring/daring/hybrid) pada …”
+
+Poin 2 WAJIB berupa tujuan rapat dalam kalimat normatif panjang:
+
+“Rapat ini diselenggarakan dalam rangka … serta bertujuan untuk …”
+
+Poin 3 WAJIB memuat peserta secara naratif:
+
+“Adapun peserta rapat terdiri atas perwakilan dari …”
+
+Jangan menulis hanya berupa daftar singkat.
+
+II. LATAR BELAKANG
+
+Bagian ini HARUS:
+
+Menjelaskan konteks kebijakan
+
+Menjelaskan urgensi
+
+Menjelaskan dampak sektoral/nasional
+
+Menjelaskan risiko apabila tidak ditangani
+
+Ditulis minimal 2–4 paragraf analitis
+
+Gunakan frasa seperti:
+
+“Urgensi pembahasan dipicu oleh…”
+
+“Dalam rangka menjamin keberlanjutan…”
+
+“Kondisi tersebut berpotensi menimbulkan…”
+
+“Sehingga diperlukan langkah strategis…”
+
+“Dalam kerangka kebijakan nasional…”
+
+Hindari penjelasan yang terlalu singkat.
+
+III. PEMBAHASAN
+
+JANGAN menggunakan gaya percakapan seperti:
+“Direktur menyampaikan…”
+“ASAKI mengatakan…”
+
+Ganti dengan gaya impersonal dan normatif seperti:
+
+“Dijelaskan bahwa…”
+
+“Disampaikan bahwa…”
+
+“Ditegaskan bahwa…”
+
+“Diperkirakan bahwa…”
+
+“Dinyatakan bahwa…”
+
+“Diusulkan agar…”
+
+Pembahasan harus:
+
+Merumuskan substansi kebijakan
+
+Menjelaskan progres/indikator jika ada
+
+Menjelaskan kendala administratif/teknis
+
+Menjelaskan proyeksi atau estimasi dampak
+
+Tidak terlalu singkat
+
+Bersifat analitis, bukan hanya kronologis
+
+Jika terdapat data angka, uraikan secara formal.
+Jika ada target, jelaskan status capaiannya.
+Jika ada kendala, jelaskan implikasinya.
+
+IV. REKOMENDASI DAN TINDAK LANJUT
+
+Gunakan kalimat tegas dan normatif:
+
+“Disepakati bahwa…”
+
+“Ditetapkan bahwa…”
+
+“Sebagai tindak lanjut…”
+
+“Untuk menjamin keberlanjutan…”
+
+Jangan hanya berupa daftar tugas.
+Setiap poin harus berupa kalimat lengkap formal.
+
+KARAKTER BAHASA YANG WAJIB
+
+✔ Formal birokratis
+✔ Objektif
+✔ Impersonal (hindari saya/kami/kita)
+✔ Naratif panjang dan sistematis
+✔ Menggunakan istilah regulatif dan administratif
+✔ Tidak terlalu ringkas
+
+LARANGAN
+
+❌ Jangan menggunakan gaya percakapan
+❌ Jangan menggunakan bahasa informal
+❌ Jangan terlalu singkat
+❌ Jangan membuat ringkasan seperti minutes of meeting biasa
+❌ Jangan menggunakan huruf kapital penuh untuk judul bab
+
+OUTPUT HARUS menyerupai dokumen risalah rapat kementerian yang siap dicetak dan diedarkan.
 """
     response_notulen = client.chat.completions.create(
             model="gpt-4o-mini",
