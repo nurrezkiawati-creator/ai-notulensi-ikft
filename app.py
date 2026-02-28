@@ -46,7 +46,7 @@ st.title("AI NOTULENSI RAPAT IKFT – V2 Professional")
 # =============================
 
 tanggal = st.date_input("Tanggal Rapat")
-judul = st.text_input("Judul / Agenda Rapat")
+perihal = st.text_input("perihal")
 waktu = st.text_input("Waktu")
 tempat = st.text_input("Tempat")
 pimpinan = st.text_input("Pimpinan Rapat")
@@ -71,7 +71,7 @@ if st.button("Generate Notulensi V2"):
 
     Buat Matriks Aksi dari catatan rapat berikut.
 
-    Agenda Rapat: {judul}
+    Agenda Rapat: {perihal}
 
     Identifikasi:
     - Keputusan
@@ -273,7 +273,7 @@ if st.button("Generate Notulensi V2"):
     Jangan menggunakan bahasa informal
     Jangan terlalu singkat
     Jangan membuat ringkasan seperti minutes of meeting biasa
-    Jangan menggunakan huruf kapital penuh untuk judul bab
+    Jangan menggunakan huruf kapital penuh untuk perihal bab
 
     OUTPUT HARUS menyerupai dokumen risalah rapat kementerian yang siap dicetak dan diedarkan.
 """
