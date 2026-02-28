@@ -141,7 +141,7 @@ if st.button("Generate Notulensi V2"):
     Tanggal : {tanggal}  
     Waktu : {waktu}  
     Tempat : {tempat}  
-    Perihal : {judul rapat}  
+    Perihal : {perihal}  
     Pimpinan Rapat : {pimpinan}
 
     RISALAH RAPAT  
