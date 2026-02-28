@@ -151,133 +151,131 @@ if st.button("Generate Notulensi V2"):
     III. Pembahasan  
     IV. Rekomendasi dan Tindak Lanjut  
 
-Gunakan penomoran bertingkat:
+    Gunakan penomoran bertingkat:
 
-Romawi (I, II, III, IV)
+    Romawi (I, II, III, IV)
 
-Angka (1, 2, 3)
+    Angka (1, 2, 3)
 
-Huruf (a, b, c) bila diperlukan
+    Huruf (a, b, c) bila diperlukan
 
-Jangan gunakan bullet simbol (•).
+    Jangan gunakan bullet simbol (•)
 
-KETENTUAN PENULISAN PER BAGIAN
+    KETENTUAN PENULISAN PER BAGIAN
 
-I. UMUM
+    I. UMUM
 
-Poin 1 WAJIB berupa narasi:
+    Poin 1 WAJIB berupa narasi:
 
-“Rapat ini dipimpin oleh … selaku … dan dilaksanakan secara (luring/daring/hybrid) pada …”
+   “Rapat ini dipimpin oleh … selaku … dan dilaksanakan secara (luring/daring/hybrid) pada …”
 
-Poin 2 WAJIB berupa tujuan rapat dalam kalimat normatif panjang:
+    Poin 2 WAJIB berupa tujuan rapat dalam kalimat normatif panjang:
 
-“Rapat ini diselenggarakan dalam rangka … serta bertujuan untuk …”
+    “Rapat ini diselenggarakan dalam rangka … serta bertujuan untuk …”
 
-Poin 3 WAJIB memuat peserta secara naratif:
+    Poin 3 WAJIB memuat peserta secara naratif:
 
-“Adapun peserta rapat terdiri atas perwakilan dari …”
+    “Adapun peserta rapat terdiri atas perwakilan dari …”
 
-Jangan menulis hanya berupa daftar singkat.
+    Jangan menulis hanya berupa daftar singkat.
 
-II. LATAR BELAKANG
+    II. LATAR BELAKANG
 
-Bagian ini HARUS:
+    Bagian ini HARUS:
 
-Menjelaskan konteks kebijakan
+    Menjelaskan konteks kebijakan
 
-Menjelaskan urgensi
+    Menjelaskan urgensi
 
-Menjelaskan dampak sektoral/nasional
+    Menjelaskan dampak sektoral/nasional
 
-Menjelaskan risiko apabila tidak ditangani
+    Menjelaskan risiko apabila tidak ditangani
 
-Ditulis minimal 2–4 paragraf analitis
+    Ditulis minimal 2–4 paragraf analitis
 
-Gunakan frasa seperti:
+    Gunakan frasa seperti:
 
-“Urgensi pembahasan dipicu oleh…”
+    “Urgensi pembahasan dipicu oleh…”
 
-“Dalam rangka menjamin keberlanjutan…”
+    “Dalam rangka menjamin keberlanjutan…”
 
-“Kondisi tersebut berpotensi menimbulkan…”
+    “Kondisi tersebut berpotensi menimbulkan…”
 
-“Sehingga diperlukan langkah strategis…”
+    “Sehingga diperlukan langkah strategis…”
 
-“Dalam kerangka kebijakan nasional…”
+    “Dalam kerangka kebijakan nasional…”
 
-Hindari penjelasan yang terlalu singkat.
+    Hindari penjelasan yang terlalu singkat.
 
-III. PEMBAHASAN
+    III. PEMBAHASAN
 
-JANGAN menggunakan gaya percakapan seperti:
-“Direktur menyampaikan…”
-“ASAKI mengatakan…”
+    JANGAN menggunakan gaya percakapan seperti:
+    “Direktur menyampaikan…”
+    “ASAKI mengatakan…”
 
-Ganti dengan gaya impersonal dan normatif seperti:
+    Ganti dengan gaya impersonal dan normatif seperti:
 
-“Dijelaskan bahwa…”
+    “Dijelaskan bahwa…”
 
-“Disampaikan bahwa…”
+    “Disampaikan bahwa…”
 
-“Ditegaskan bahwa…”
+    “Ditegaskan bahwa…”
 
-“Diperkirakan bahwa…”
+    “Diperkirakan bahwa…”
 
-“Dinyatakan bahwa…”
+    “Dinyatakan bahwa…”
 
-“Diusulkan agar…”
+    “Diusulkan agar…”
 
-Pembahasan harus:
+    Pembahasan harus:
 
-Merumuskan substansi kebijakan
+    Merumuskan substansi kebijakan
 
-Menjelaskan progres/indikator jika ada
+    Menjelaskan progres/indikator jika ada
 
-Menjelaskan kendala administratif/teknis
+    Menjelaskan kendala administratif/teknis
 
-Menjelaskan proyeksi atau estimasi dampak
+    Menjelaskan proyeksi atau estimasi dampak
 
-Tidak terlalu singkat
+    Tidak terlalu singkat
 
-Bersifat analitis, bukan hanya kronologis
+    Bersifat analitis, bukan hanya kronologis
 
-Jika terdapat data angka, uraikan secara formal.
-Jika ada target, jelaskan status capaiannya.
-Jika ada kendala, jelaskan implikasinya.
+    Jika terdapat data angka, uraikan secara formal.
+    Jika ada target, jelaskan status capaiannya.
+    Jika ada kendala, jelaskan implikasinya.
 
-IV. REKOMENDASI DAN TINDAK LANJUT
+    IV. REKOMENDASI DAN TINDAK LANJUT
 
-Gunakan kalimat tegas dan normatif:
+    Gunakan kalimat tegas dan normatif:
 
-“Disepakati bahwa…”
+    “Disepakati bahwa…”
 
-“Ditetapkan bahwa…”
+    “Ditetapkan bahwa…”
 
-“Sebagai tindak lanjut…”
+    “Sebagai tindak lanjut…”
 
-“Untuk menjamin keberlanjutan…”
+    “Untuk menjamin keberlanjutan…”
 
-Jangan hanya berupa daftar tugas.
-Setiap poin harus berupa kalimat lengkap formal.
+    Jangan hanya berupa daftar tugas.
+    Setiap poin harus berupa kalimat lengkap formal.
 
-KARAKTER BAHASA YANG WAJIB
+    KARAKTER BAHASA YANG WAJIB
+    Formal birokratis
+    Objektif
+    Impersonal (hindari saya/kami/kita)
+    Naratif panjang dan sistematis
+    Menggunakan istilah regulatif dan administratif
+    Tidak terlalu ringkas
 
-✔ Formal birokratis
-✔ Objektif
-✔ Impersonal (hindari saya/kami/kita)
-✔ Naratif panjang dan sistematis
-✔ Menggunakan istilah regulatif dan administratif
-✔ Tidak terlalu ringkas
+    LARANGAN
+    Jangan menggunakan gaya percakapan
+    Jangan menggunakan bahasa informal
+    Jangan terlalu singkat
+    Jangan membuat ringkasan seperti minutes of meeting biasa
+    Jangan menggunakan huruf kapital penuh untuk judul bab
 
-LARANGAN
-
-❌ Jangan menggunakan gaya percakapan
-❌ Jangan menggunakan bahasa informal
-❌ Jangan terlalu singkat
-❌ Jangan membuat ringkasan seperti minutes of meeting biasa
-❌ Jangan menggunakan huruf kapital penuh untuk judul bab
-
-OUTPUT HARUS menyerupai dokumen risalah rapat kementerian yang siap dicetak dan diedarkan.
+    OUTPUT HARUS menyerupai dokumen risalah rapat kementerian yang siap dicetak dan diedarkan.
 """
     response_notulen = client.chat.completions.create(
             model="gpt-4o-mini",
