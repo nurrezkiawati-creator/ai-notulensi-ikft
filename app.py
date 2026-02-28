@@ -131,67 +131,27 @@ if st.button("Generate Notulensi V2"):
 
     prompt_notulen = f"""
 
-Anda adalah penyusun RISALAH RAPAT resmi tingkat kementerian.
-Gunakan bahasa Indonesia baku, formal, administratif, objektif, dan teknokratis.
-Hasil harus layak menjadi dokumen arsip resmi dan bahan laporan pimpinan.
+ANDA ADALAH notulis resmi kementerian Republik Indonesia yang bertugas menyusun RISALAH RAPAT formal tingkat direktorat/deputi/eselon I.
 
-Ketentuan umum:
-- Tidak menambahkan isu baru yang tidak dibahas dalam catatan rapat.
-- Tidak menuliskan dialog atau transkrip percakapan.
-- Tidak menggunakan kata ganti orang pertama.
-- Tidak bersifat opini.
-- Gunakan penomoran Romawi dan Arab.
-- Tidak menggunakan bullet simbol.
-- Ringkas namun tetap substantif.
+Tugas Anda adalah mengubah transkrip rapat menjadi dokumen RISALAH RAPAT resmi dengan gaya bahasa birokratis, formal, sistematis, naratif-analitis, dan siap diedarkan sebagai dokumen kementerian.
 
-RISALAH RAPAT
+FORMAT DOKUMEN
 
-Tanggal: {tanggal}
-Waktu: {waktu}
-Tempat: {tempat}
-Perihal: {judul}
-Pimpinan Rapat: {pimpinan}
+NOTULA RAPAT  
+Tanggal : {tanggal}  
+Waktu : {waktu}  
+Tempat : {tempat}  
+Perihal : {perihal}  
+Pimpinan Rapat : {pimpinan}
 
-I. UMUM
-Uraikan secara formal dan netral mengenai:
-1. Pimpinan rapat
-2. Waktu dan tempat pelaksanaan
-3. Unit kerja/instansi yang hadir
-Gunakan redaksi administratif tanpa opini.
+RISALAH RAPAT  
 
-II. LATAR BELAKANG
-Meskipun dalam rapat latar belakang dapat disampaikan secara singkat, kembangkan bagian ini secara lebih detail namun tetap padat dan substantif dengan ketentuan:
+I. Umum  
+II. Latar Belakang  
+III. Pembahasan  
+IV. Rekomendasi dan Tindak Lanjut  
 
-1. Gunakan informasi dalam catatan rapat sebagai dasar utama.
-2. Apabila terdapat penyebutan regulasi, kebijakan, atau program nasional, jelaskan secara ringkas namun substantif mengenai:
-   a. Konteks pembentukannya
-   b. Tujuan pengaturannya
-   c. Relevansinya terhadap materi yang dibahas
-3. Diperbolehkan memperkaya penjelasan menggunakan informasi regulasi atau kebijakan resmi yang relevan dan kredibel untuk memperjelas konteks, tanpa menambahkan isu baru.
-4. Susun secara runtut:
-   a. Kondisi atau kebijakan nasional yang melatarbelakangi
-   b. Permasalahan atau kebutuhan penyesuaian
-   c. Alasan strategis dilaksanakannya rapat
-Gunakan bahasa formal dan teknokratis tanpa opini atau asumsi.
-
-III. POKOK PEMBAHASAN
-Sajikan inti pembahasan secara sistematis dalam poin bernomor, meliputi:
-1. Penjelasan atau pandangan unit kerja terkait
-2. Isu strategis dan pertimbangan kebijakan
-3. Arah atau kesepahaman yang mengemuka dalam rapat
-Tidak mencantumkan transkrip dialog dan tidak melakukan interpretasi tambahan.
-
-IV. REKOMENDASI DAN TINDAK LANJUT
-Gabungkan rekomendasi dan tindak lanjut dalam satu bagian dengan ketentuan:
-1. Hanya mencantumkan hal yang benar-benar dibahas dan disepakati dalam rapat.
-2. Setiap poin mencerminkan:
-   a. Arah kebijakan atau kesimpulan rapat
-   b. Unit kerja/pihak yang terkait (jika disebut)
-   c. Bentuk tindak lanjut yang jelas dan operasional
-Gunakan kalimat formal, tegas, dan administratif.
-
-Catatan Rapat:
-{catatan}
+... (lanjutkan seluruh isi prompt sampai selesai)
 """
     response_notulen = client.chat.completions.create(
             model="gpt-4o-mini",
