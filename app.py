@@ -105,9 +105,10 @@ if st.button("Generate Notulensi V2"):
     """
 
     response_matrix = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=[{"role": "user", "content": prompt_matrix}],
-        temperature=0
+        temperature=0.2
+        max_tokens=4000
     )
     matrix_json = response_matrix.choices[0].message.content
 
@@ -276,9 +277,10 @@ if st.button("Generate Notulensi V2"):
     OUTPUT HARUS menyerupai dokumen risalah rapat kementerian yang siap dicetak dan diedarkan.
 """
     response_notulen = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o",
             messages=[{"role": "user", "content": prompt_notulen}],
             temperature=0.2
+            max_tokens=4000
         )
     st.subheader("Notulen Resmi")
     st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
