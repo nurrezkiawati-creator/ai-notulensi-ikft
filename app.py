@@ -279,7 +279,7 @@ if st.button("Generate Notulensi V2"):
     response_notulen = client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "system", "content": prompt_notulen},
-            {"role": "user", "content": transkrip_rapat}],
+            {"role": "user", "content": catatan}],
             temperature=0.2,
             max_tokens=4000
         )
