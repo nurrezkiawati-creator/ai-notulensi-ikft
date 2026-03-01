@@ -189,7 +189,6 @@ if st.button("Generate Notulensi V2"):
     Romawi (I, II, III, IV)
     Angka (1, 2, 3)
     Huruf (a, b, c) bila diperlukan
-    Jangan gunakan bullet simbol (•)
 
     KETENTUAN PENULISAN PER BAGIAN
 
