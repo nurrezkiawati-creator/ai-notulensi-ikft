@@ -39,7 +39,7 @@ with col2:
 
 st.markdown("<hr style='border:2px solid black;'>", unsafe_allow_html=True)
 
-st.title("IU Setditjen IKFT Smart Meeting Minutes System (AI-Powered Professional Notulensi & Action Tracker)")
+st.title("IKFT Smart Meeting Minutes System (AI-Powered Professional)")
 
 # =============================
 # INPUT
