@@ -107,7 +107,7 @@ if st.button("Generate Notulensi V2"):
     response_matrix = client.chat.completions.create(
         model="gpt-4o",
         messages=[{"role": "user", "content": prompt_matrix}],
-        temperature=0.2
+        temperature=0.2,
         max_tokens=4000
     )
     matrix_json = response_matrix.choices[0].message.content
@@ -279,7 +279,7 @@ if st.button("Generate Notulensi V2"):
     response_notulen = client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "user", "content": prompt_notulen}],
-            temperature=0.2
+            temperature=0.2,
             max_tokens=4000
         )
     st.subheader("Notulen Resmi")
