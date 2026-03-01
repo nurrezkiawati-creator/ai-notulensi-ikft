@@ -224,7 +224,7 @@ if st.button("Generate Notulensi V2"):
     "Sehingga diperlukan langkah…"
     "Dengan demikian…"
     
-    Hindari penggunaan repetitif frasa seperti “Dijelaskan bahwa…” di setiap poin.
+    Hindari penggunaan repetitif frasa seperti "Dijelaskan bahwa…" di setiap poin.
 
     Pembahasan harus:
     Merumuskan substansi kebijakan
