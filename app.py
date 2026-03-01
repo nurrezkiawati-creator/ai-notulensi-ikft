@@ -194,9 +194,9 @@ if st.button("Generate Notulensi V2"):
 
     I. UMUM
     Poin 1 WAJIB berupa narasi:
-    “Rapat ini dipimpin oleh … selaku … dan dilaksanakan secara (luring/daring/hybrid) pada … Adapun peserta rapat terdiri atas perwakilan dari”
+    "Rapat ini dipimpin oleh … selaku … dan dilaksanakan secara (luring/daring/hybrid) pada … Adapun peserta rapat terdiri atas perwakilan dari"
     Poin 2 WAJIB berupa tujuan rapat dalam kalimat normatif:
-    “Rapat ini diselenggarakan dalam rangka … serta bertujuan untuk …”
+    "Rapat ini diselenggarakan dalam rangka … serta bertujuan untuk …"
     Jangan menulis hanya berupa daftar singkat.
 
     II. LATAR BELAKANG
@@ -213,16 +213,16 @@ if st.button("Generate Notulensi V2"):
     III. PEMBAHASAN
 
     JANGAN menggunakan gaya percakapan seperti:
-    “Direktur menyampaikan…”
-    “ASAKI mengatakan…”
+    "Direktur menyampaikan…"
+    "ASAKI mengatakan…"
     Gunakan variasi kalimat formal seperti:
-    “Terdapat…”
-    “Kondisi menunjukkan…”
-    “Dalam konteks tersebut…”
-    “Hal ini berdampak pada…”
-    “Apabila tidak ditindaklanjuti…”
-    “Sehingga diperlukan langkah…”
-    “Dengan demikian…”
+    "Terdapat…"
+    "Kondisi menunjukkan…"
+    "Dalam konteks tersebut…"
+    "Hal ini berdampak pada…"
+    "Apabila tidak ditindaklanjuti…"
+    "Sehingga diperlukan langkah…"
+    "Dengan demikian…"
     
     Hindari penggunaan repetitif frasa seperti “Dijelaskan bahwa…” di setiap poin.
 
@@ -248,10 +248,10 @@ if st.button("Generate Notulensi V2"):
     Berdasarkan seluruh pembahasan.
     Tidak menghilangkan usulan yang muncul.
     Menggunakan kalimat normatif seperti
-    “Disepakati bahwa…”
-    “Ditetapkan bahwa…”
-    “Sebagai tindak lanjut…”
-    “Untuk menjamin keberlanjutan…”
+    "Disepakati bahwa…"
+    "Ditetapkan bahwa…"
+    "Sebagai tindak lanjut…"
+    "Untuk menjamin keberlanjutan…"
 
     Jangan hanya berupa daftar tugas.
     Setiap poin harus berupa kalimat lengkap formal.
