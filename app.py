@@ -46,7 +46,7 @@ st.title("AI NOTULENSI RAPAT IKFT – V2 Professional")
 # =============================
 
 tanggal = st.date_input("Tanggal Rapat")
-perihal = st.text_input("perihal")
+perihal = st.text_input("Perihal")
 waktu = st.text_input("Waktu")
 tempat = st.text_input("Tempat")
 pimpinan = st.text_input("Pimpinan Rapat")
