@@ -151,7 +151,7 @@ if st.button("Generate Notulensi V2"):
     PROSES INTERNAL WAJIB (JANGAN DITAMPILKAN)
 
     Sebelum menulis RISALAH RAPAT, lakukan secara internal:
-    Langkah 1 – Inventarisasi Substansi
+    Langkah 1 Inventarisasi Substansi
     Identifikasi seluruh:
     Isu yang dibahas
     Data dan angka
@@ -163,9 +163,9 @@ if st.button("Generate Notulensi V2"):
     Estimasi dampak
     Tenggat waktu
     
-    Langkah 2 – Pengelompokan Isu
+    Langkah 2  Pengelompokan Isu
     Kelompokkan seluruh substansi ke dalam kategori yang logis agar tidak ada yang terlewat.
-    Langkah 3 – Formulasi Lengkap
+    Langkah 3 Formulasi Lengkap
     Tulis seluruh hasil inventarisasi tersebut ke dalam bagian Pembahasan secara sistematis dan lengkap
     Jangan tampilkan langkah ini dalam output.
 
