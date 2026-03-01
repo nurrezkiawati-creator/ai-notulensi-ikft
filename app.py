@@ -207,7 +207,7 @@ if st.button("Generate Notulensi V2"):
     Menjelaskan dampak sektoral/nasional
     Menjelaskan risiko apabila tidak ditangani
   
-    Ditulis minimal 2–4 paragraf analitis
+    Ditulis minimal 2 sampai 4 paragraf analitis
 
 
     III. PEMBAHASAN
