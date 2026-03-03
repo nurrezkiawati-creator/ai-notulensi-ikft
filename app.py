@@ -222,7 +222,7 @@ if st.button("Generate Notulensi V2"):
     Hal ini berdampak pada
     Apabila tidak ditindaklanjuti
     Sehingga diperlukan langkah
-    Dengan demikian…
+    Dengan demikian
     
     Hindari penggunaan repetitif frasa seperti Dijelaskan bahwa… di setiap poin.
 
