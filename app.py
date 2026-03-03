@@ -224,7 +224,7 @@ if st.button("Generate Notulensi V2"):
     Sehingga diperlukan langkah
     Dengan demikian
     
-    Hindari penggunaan repetitif frasa seperti Dijelaskan bahwa… di setiap poin.
+    Hindari penggunaan repetitif frasa seperti Dijelaskan bahwa di setiap poin.
 
     Pembahasan harus:
     Merumuskan substansi kebijakan
@@ -248,10 +248,10 @@ if st.button("Generate Notulensi V2"):
     Berdasarkan seluruh pembahasan.
     Tidak menghilangkan usulan yang muncul.
     Menggunakan kalimat normatif seperti
-    Disepakati bahwa…
-    Ditetapkan bahwa…
-    sebagai tindak lanjut…
-    Untuk menjamin keberlanjutan…
+    Disepakati bahwa
+    Ditetapkan bahwa
+    sebagai tindak lanjut
+    Untuk menjamin keberlanjutan
 
     Jangan hanya berupa daftar tugas.
     Setiap poin harus berupa kalimat lengkap formal.
