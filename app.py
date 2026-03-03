@@ -29,18 +29,14 @@ with col1:
     )
 
 with col2:
-st.markdown("""
-<div style="display:flex; align-items:center; gap:20px; line-height:1.4;">
-    <img src="logo-kemenperin.png" width="90">
-    <div>
-        <b>KEMENTERIAN PERINDUSTRIAN REPUBLIK INDONESIA</b><br>
-        <b>DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL</b><br>
-        Jl. Jenderal Gatot Subroto Kav. 52-53 Jakarta 12950
+    st.markdown("""
+    <div style="display:flex; align-items:center; gap:20px; line-height:1.4;">
+        <div>
+            <b>KEMENTERIAN PERINDUSTRIAN REPUBLIK INDONESIA</b><br>
+            <b>DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL</b><br>
+            Jl. Jenderal Gatot Subroto Kav. 52-53 Jakarta 12950
+        </div>
     </div>
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("<hr style='border:2px solid black;'>", unsafe_allow_html=True)
     """, unsafe_allow_html=True)
 
 st.markdown("<hr style='border:2px solid black;'>", unsafe_allow_html=True)
