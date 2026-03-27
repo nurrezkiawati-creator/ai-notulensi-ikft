@@ -340,7 +340,7 @@ if st.button("Export PDF"):
         ]))
         # ================= HEADER KOP RESMI =================
 
-        logo = Image("logo_kemenperin.png", width=1.2*inch, height=1.2*inch)
+        logo = Image("logo.png", width=1.2*inch, height=1.2*inch)
         
         header_text = [
             Paragraph("<b>DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL</b>", styles["Normal"]),
