@@ -300,13 +300,7 @@ from reportlab.lib.styles import ParagraphStyle
 import io
 
 if st.button("Export PDF"):
-    data = [
-    ["Tanggal", f": {tanggal}"],
-    ["Waktu", f": {waktu}"],
-    ["Tempat", f": {tempat}"],
-    ["Perihal", f": {perihal}"],
-    ["Pimpinan Rapat", f": {pimpinan}"],
-]
+  
 
     isi_notulen = st.session_state.get("hasil_notulen", "")
 
@@ -341,13 +335,13 @@ table.setStyle(TableStyle([
     ('RIGHTPADDING', (0,0), (-1,-1), 8),
 ]))
 elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
-elements.append(Spacer(1, 10))
+elements.append(Spacer(1, 14))
 
 elements.append(table)
 elements.append(Spacer(1, 12))
 
 elements.append(Paragraph("<b>RISALAH RAPAT</b>", styles["Heading2"]))
-elements.append(Spacer(1, 8))
+elements.append(Spacer(1, 10))
         nomor = 1
         bagian = ""
         for line in isi_notulen.split("\n"):
