@@ -396,8 +396,8 @@ if st.button("Export PDF"):
 
         # ================= OUTER BOX =================
 
-     for line in isi_notulen.split("\n"):
-    ...
+         for line in isi_notulen.split("\n"):
+        ...
         
         # ⬇️ tanda tangan di sini
         elements.append(Spacer(1, 20))
