@@ -304,9 +304,11 @@ if st.button("Export PDF"):
 
     isi_notulen = response_notulen.choices[0].message.content
 
-    elements.append(Paragraph("NOTULA RAPAT", styles["Title"]))
+    elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
     elements.append(Spacer(1, 10))
-    elements.append(Paragraph(isi_notulen, styles["Normal"]))
+    for line in isi_notulen.split("\n"):
+        elements.append(Paragraph(line, styles["Normal"]))
+        elements.append(Spacer(1, 6))
 
     doc.build(elements)
 
