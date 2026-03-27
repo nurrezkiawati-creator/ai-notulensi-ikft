@@ -7,6 +7,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Table, TableStyle
 from reportlab.lib import colors
+from reportlab.lib.units import inch
 from reportlab.platypus import Frame
 import io
 
@@ -337,7 +338,27 @@ if st.button("Export PDF"):
             ('LEFTPADDING', (0,0), (-1,-1), 8),
             ('RIGHTPADDING', (0,0), (-1,-1), 8),
         ]))
-        elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
+        # ================= HEADER KOP RESMI =================
+
+        logo = Image("logo_kemenperin.png", width=1.2*inch, height=1.2*inch)
+        
+        header_text = [
+            Paragraph("<b>DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL</b>", styles["Normal"]),
+            Paragraph("Jalan Jenderal Gatot Subroto Kav 52-53 Jakarta 12950 Kotak Pos : 4720 JKTM", styles["Normal"]),
+            Paragraph("Telp : 5255509", styles["Normal"]),
+        ]
+        
+        header_table = Table([
+            [logo, header_text]
+        ], colWidths=[90, 400])
+        
+        header_table.setStyle(TableStyle([
+            ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
+        ]))
+        
+        elements.append(header_table)
+        elements.append(Spacer(1, 6))
+        elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Center"]))
         elements.append(Spacer(1, 14))
         
         elements.append(table)
