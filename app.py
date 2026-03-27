@@ -288,6 +288,7 @@ if st.button("Generate Notulensi V2"):
         )
     st.subheader("Notulen Resmi")
     st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
+    st.session_state["hasil_notulen"] = response_notulen.choices[0].message.content
     # ================= EXPORT PDF =================
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.pagesizes import A4
@@ -296,25 +297,29 @@ import io
 
 if st.button("Export PDF"):
 
-    buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=A4)
-    elements = []
+    isi_notulen = st.session_state.get("hasil_notulen", "")
 
-    styles = getSampleStyleSheet()
+    if isi_notulen == "":
+        st.warning("Silakan generate notulen terlebih dahulu")
+    else:
+        buffer = io.BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=A4)
+        elements = []
 
-    isi_notulen = response_notulen.choices[0].message.content
+        styles = getSampleStyleSheet()
 
-    elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
-    elements.append(Spacer(1, 10))
-    for line in isi_notulen.split("\n"):
-        elements.append(Paragraph(line, styles["Normal"]))
-        elements.append(Spacer(1, 6))
+        elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
+        elements.append(Spacer(1, 10))
 
-    doc.build(elements)
+        for line in isi_notulen.split("\n"):
+            elements.append(Paragraph(line, styles["Normal"]))
+            elements.append(Spacer(1, 6))
 
-    st.download_button(
-        "Download PDF",
-        buffer.getvalue(),
-        file_name="notula_rapat.pdf",
-        mime="application/pdf"
-    )
+        doc.build(elements)
+
+        st.download_button(
+            "Download PDF",
+            buffer.getvalue(),
+            file_name="notula_rapat.pdf",
+            mime="application/pdf"
+        )
