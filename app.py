@@ -293,6 +293,8 @@ if st.button("Generate Notulensi V2"):
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.enums import TA_JUSTIFY
+from reportlab.lib.styles import ParagraphStyle
 import io
 
 if st.button("Export PDF"):
@@ -307,26 +309,44 @@ if st.button("Export PDF"):
         elements = []
 
         styles = getSampleStyleSheet() 
+        styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+        nomor = 1
+        bagian = ""
         for line in isi_notulen.split("\n"):
 
             line = line.strip()
-
-            if line.startswith("I.") or line.startswith("II.") or line.startswith("III.") or line.startswith("IV."):
+            line = line.replace("**", "")
+            # Deteksi bagian utama
+            if line.startswith("I."):
+                bagian = "umum"
+                nomor = 1
                 elements.append(Spacer(1, 10))
                 elements.append(Paragraph(f"<b>{line}</b>", styles["Heading2"]))
-                elements.append(Spacer(1, 6))
-
-            elif line[:2].isdigit():
-                elements.append(Paragraph(line, styles["Normal"]))
-                elements.append(Spacer(1, 4))
-
+            elif line.startswith("II."):
+                bagian = "latar"
+                nomor = 1
+                elements.append(Spacer(1, 10))
+                elements.append(Paragraph(f"<b>{line}</b>", styles["Heading2"]))
+        
+            elif line.startswith("III.") or line.startswith("IV."):
+                bagian = "lain"
+                elements.append(Spacer(1, 10))
+                elements.append(Paragraph(f"<b>{line}</b>", styles["Heading2"]))
+        
+            # Kosong
             elif line == "":
                 elements.append(Spacer(1, 8))
-
-            else:
-                elements.append(Paragraph(line, styles["Normal"]))
+        
+            # Penomoran khusus Umum & Latar Belakang
+            elif bagian in ["umum", "latar"]:
+                elements.append(Paragraph(f"{nomor}. {line}", styles["Justify"]))
                 elements.append(Spacer(1, 6))
-
+                nomor += 1
+        
+            # Pembahasan & lainnya (tanpa batas)
+            else:
+                elements.append(Paragraph(line, styles["Justify"]))
+                elements.append(Spacer(1, 6))
 
 
         doc.build(elements)
