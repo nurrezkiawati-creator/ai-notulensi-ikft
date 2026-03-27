@@ -376,7 +376,7 @@ if st.button("Export PDF"):
         
             # Kosong
             elif line == "":
-                elements.append(Spacer(1, 8))
+                continue
         
             # Penomoran khusus Umum & Latar Belakang
             elif bagian in ["umum", "latar"]:
