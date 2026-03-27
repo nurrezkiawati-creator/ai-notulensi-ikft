@@ -398,7 +398,7 @@ if st.button("Export PDF"):
 
         elements.append(Paragraph(... isi notulen ...))
         
-        # ⬇️ tanda tangan di sini
+   
         elements.append(Spacer(1, 20))
         elements.append(Paragraph("Sekretaris Direktorat Jenderal", styles["Right"]))
         
