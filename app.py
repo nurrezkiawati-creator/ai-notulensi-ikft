@@ -396,12 +396,14 @@ if st.button("Export PDF"):
 
         # ================= OUTER BOX =================
 
-        final_elements.append(Spacer(1, 20))
+       ...
+        elements.append(Paragraph(... isi notulen ...))
         
-        final_elements.append(Paragraph(
-            "Sekretaris Direktorat Jenderal",
-            styles["Right"]
-))
+        # ⬇️ tanda tangan di sini
+        elements.append(Spacer(1, 20))
+        elements.append(Paragraph("Sekretaris Direktorat Jenderal", styles["Right"]))
+        
+        
         def add_border(canvas, doc):
             canvas.saveState()
             canvas.setLineWidth(1)
