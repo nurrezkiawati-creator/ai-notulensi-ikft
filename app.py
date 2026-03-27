@@ -402,7 +402,7 @@ if st.button("Export PDF"):
             "Sekretaris Direktorat Jenderal",
             styles["Right"]
 ))
-        def add_border(canvas, doc):   ✅ harus mentok kiri
+        def add_border(canvas, doc):
             canvas.saveState()
             canvas.setLineWidth(1)
             canvas.rect(30, 30, 535, 780)
