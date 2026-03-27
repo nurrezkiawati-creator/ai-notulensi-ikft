@@ -2,6 +2,11 @@ import streamlit as st
 from openai import OpenAI
 import json
 
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet
+import io
+
 api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
 
@@ -283,3 +288,31 @@ if st.button("Generate Notulensi V2"):
         )
     st.subheader("Notulen Resmi")
     st.text_area("Output Notulen", response_notulen.choices[0].message.content, height=400)
+    # ================= EXPORT PDF =================
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet
+import io
+
+if st.button("Export PDF"):
+
+    buffer = io.BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=A4)
+    elements = []
+
+    styles = getSampleStyleSheet()
+
+    isi_notulen = response_notulen.choices[0].message.content
+
+    elements.append(Paragraph("NOTULA RAPAT", styles["Title"]))
+    elements.append(Spacer(1, 10))
+    elements.append(Paragraph(isi_notulen, styles["Normal"]))
+
+    doc.build(elements)
+
+    st.download_button(
+        "Download PDF",
+        buffer.getvalue(),
+        file_name="notula_rapat.pdf",
+        mime="application/pdf"
+    )
