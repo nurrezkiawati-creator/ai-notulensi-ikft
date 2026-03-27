@@ -7,6 +7,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Table, TableStyle
 from reportlab.lib import colors
+from reportlab.platypus import Frame
 import io
 
 api_key = st.secrets["OPENAI_API_KEY"]
@@ -394,25 +395,20 @@ if st.button("Export PDF"):
 
 
         # ================= OUTER BOX =================
-        outer_table = Table([[elements]], colWidths=[480])
-        
-        outer_table.setStyle(TableStyle([
-            ('BOX', (0,0), (-1,-1), 1.5, colors.black),
-            ('LEFTPADDING', (0,0), (-1,-1), 12),
-            ('RIGHTPADDING', (0,0), (-1,-1), 12),
-            ('TOPPADDING', (0,0), (-1,-1), 12),
-            ('BOTTOMPADDING', (0,0), (-1,-1), 12),
-        ]))
-        
-        final_elements = []
-        final_elements.append(outer_table)
+
         final_elements.append(Spacer(1, 20))
         
         final_elements.append(Paragraph(
             "Sekretaris Direktorat Jenderal",
             styles["Right"]
 ))
-        doc.build(final_elements)        
+        def add_border(canvas, doc):
+    canvas.saveState()
+    canvas.setLineWidth(1)
+    canvas.rect(30, 30, 535, 780)  # posisi kotak
+    canvas.restoreState()
+
+doc.build(elements, onFirstPage=add_border, onLaterPages=add_border)        
 
         st.download_button(
             "Download PDF",
