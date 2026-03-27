@@ -341,7 +341,7 @@ if st.button("Export PDF"):
         elements.append(Spacer(1, 12))
         
         elements.append(Paragraph("<b>RISALAH RAPAT</b>", styles["Heading2"]))
-        elements.append(Spacer(1, 10))  # sedikit diperbesar biar rapi
+        elements.append(Spacer(1, 4))  # sedikit diperbesar biar rapi
         nomor = 1
         bagian = ""
         for line in isi_notulen.split("\n"):
@@ -361,7 +361,7 @@ if st.button("Export PDF"):
             if line.startswith("I."):
                 bagian = "umum"
                 nomor = 1
-                elements.append(Spacer(1, 10))
+                elements.append(Spacer(1, 4))
                 elements.append(Paragraph(f"<b>{line}</b>", styles["Heading2"]))
             elif line.startswith("II."):
                 bagian = "latar"
