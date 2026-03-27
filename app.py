@@ -314,34 +314,34 @@ if st.button("Export PDF"):
         styles = getSampleStyleSheet() 
         styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
         # ================= TABEL INFO RAPAT =================
-data = [
-    ["<b>Tanggal</b>", f": {tanggal}"],
-    ["<b>Waktu</b>", f": {waktu}"],
-    ["<b>Tempat</b>", f": {tempat}"],
-    ["<b>Perihal</b>", f": {perihal}"],
-    ["<b>Pimpinan Rapat</b>", f": {pimpinan}"],
-]
-
-table = Table(
-    [[Paragraph(cell, styles["Normal"]) for cell in row] for row in data],
-    colWidths=[150, 330]
-)
-
-table.setStyle(TableStyle([
-    ('BOX', (0,0), (-1,-1), 1, colors.black),
-    ('INNERGRID', (0,0), (-1,-1), 0.5, colors.black),
-    ('VALIGN', (0,0), (-1,-1), 'TOP'),
-    ('LEFTPADDING', (0,0), (-1,-1), 8),
-    ('RIGHTPADDING', (0,0), (-1,-1), 8),
-]))
-elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
-elements.append(Spacer(1, 14))
-
-elements.append(table)
-elements.append(Spacer(1, 12))
-
-elements.append(Paragraph("<b>RISALAH RAPAT</b>", styles["Heading2"]))
-elements.append(Spacer(1, 10))
+        data = [
+            ["<b>Tanggal</b>", f": {tanggal}"],
+            ["<b>Waktu</b>", f": {waktu}"],
+            ["<b>Tempat</b>", f": {tempat}"],
+            ["<b>Perihal</b>", f": {perihal}"],
+            ["<b>Pimpinan Rapat</b>", f": {pimpinan}"],
+        ]
+        
+        table = Table(
+            [[Paragraph(cell, styles["Normal"]) for cell in row] for row in data],
+            colWidths=[150, 330]
+        )
+        
+        table.setStyle(TableStyle([
+            ('BOX', (0,0), (-1,-1), 1, colors.black),
+            ('INNERGRID', (0,0), (-1,-1), 0.5, colors.black),
+            ('VALIGN', (0,0), (-1,-1), 'TOP'),
+            ('LEFTPADDING', (0,0), (-1,-1), 8),
+            ('RIGHTPADDING', (0,0), (-1,-1), 8),
+        ]))
+        elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
+        elements.append(Spacer(1, 14))
+        
+        elements.append(table)
+        elements.append(Spacer(1, 12))
+        
+        elements.append(Paragraph("<b>RISALAH RAPAT</b>", styles["Heading2"]))
+        elements.append(Spacer(1, 10))
         nomor = 1
         bagian = ""
         for line in isi_notulen.split("\n"):
