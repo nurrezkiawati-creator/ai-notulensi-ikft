@@ -396,7 +396,6 @@ if st.button("Export PDF"):
 
         # ================= OUTER BOX =================
 
-       ...
         elements.append(Paragraph(... isi notulen ...))
         
         # ⬇️ tanda tangan di sini
