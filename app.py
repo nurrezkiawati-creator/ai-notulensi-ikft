@@ -306,14 +306,11 @@ if st.button("Export PDF"):
         doc = SimpleDocTemplate(buffer, pagesize=A4)
         elements = []
 
-        styles = getSampleStyleSheet()
+        styles = getSampleStyleSheet() 
 
         elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
         elements.append(Spacer(1, 10))
-
-        for line in isi_notulen.split("\n"):
-            elements.append(Paragraph(line, styles["Normal"]))
-            elements.append(Spacer(1, 6))
+0
 
         doc.build(elements)
 
