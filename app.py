@@ -394,11 +394,6 @@ if st.button("Export PDF"):
                 elements.append(Spacer(1, 6))
 
 
-        # ================= OUTER BOX =================
-
-         for line in isi_notulen.split("\n"):
-             
-        
         elements.append(Spacer(1, 20))
         elements.append(Paragraph("Sekretaris Direktorat Jenderal", styles["Right"]))
         
