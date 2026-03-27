@@ -313,6 +313,8 @@ if st.button("Export PDF"):
 
         styles = getSampleStyleSheet() 
         styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+        from reportlab.lib.enums import TA_RIGHT
+        styles.add(ParagraphStyle(name='Right', alignment=TA_RIGHT))
         # ================= TABEL INFO RAPAT =================
         data = [
             ["<b>Tanggal</b>", f": {tanggal}"],
@@ -391,7 +393,26 @@ if st.button("Export PDF"):
                 elements.append(Spacer(1, 6))
 
 
-        doc.build(elements)
+        # ================= OUTER BOX =================
+        outer_table = Table([[elements]], colWidths=[480])
+        
+        outer_table.setStyle(TableStyle([
+            ('BOX', (0,0), (-1,-1), 1.5, colors.black),
+            ('LEFTPADDING', (0,0), (-1,-1), 12),
+            ('RIGHTPADDING', (0,0), (-1,-1), 12),
+            ('TOPPADDING', (0,0), (-1,-1), 12),
+            ('BOTTOMPADDING', (0,0), (-1,-1), 12),
+        ]))
+        
+        final_elements = []
+        final_elements.append(outer_table)
+        final_elements.append(Spacer(1, 20))
+        
+        final_elements.append(Paragraph(
+            "Sekretaris Direktorat Jenderal",
+            styles["Right"]
+))
+        doc.build(final_elements)        
 
         st.download_button(
             "Download PDF",
