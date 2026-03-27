@@ -5,6 +5,8 @@ import json
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.platypus import Table, TableStyle
+from reportlab.lib import colors
 import io
 
 api_key = st.secrets["OPENAI_API_KEY"]
@@ -298,6 +300,13 @@ from reportlab.lib.styles import ParagraphStyle
 import io
 
 if st.button("Export PDF"):
+    data = [
+    ["Tanggal", f": {tanggal}"],
+    ["Waktu", f": {waktu}"],
+    ["Tempat", f": {tempat}"],
+    ["Perihal", f": {perihal}"],
+    ["Pimpinan Rapat", f": {pimpinan}"],
+]
 
     isi_notulen = st.session_state.get("hasil_notulen", "")
 
@@ -310,6 +319,35 @@ if st.button("Export PDF"):
 
         styles = getSampleStyleSheet() 
         styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+        # ================= TABEL INFO RAPAT =================
+data = [
+    ["<b>Tanggal</b>", f": {tanggal}"],
+    ["<b>Waktu</b>", f": {waktu}"],
+    ["<b>Tempat</b>", f": {tempat}"],
+    ["<b>Perihal</b>", f": {perihal}"],
+    ["<b>Pimpinan Rapat</b>", f": {pimpinan}"],
+]
+
+table = Table(
+    [[Paragraph(cell, styles["Normal"]) for cell in row] for row in data],
+    colWidths=[150, 330]
+)
+
+table.setStyle(TableStyle([
+    ('BOX', (0,0), (-1,-1), 1, colors.black),
+    ('INNERGRID', (0,0), (-1,-1), 0.5, colors.black),
+    ('VALIGN', (0,0), (-1,-1), 'TOP'),
+    ('LEFTPADDING', (0,0), (-1,-1), 8),
+    ('RIGHTPADDING', (0,0), (-1,-1), 8),
+]))
+elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
+elements.append(Spacer(1, 10))
+
+elements.append(table)
+elements.append(Spacer(1, 12))
+
+elements.append(Paragraph("<b>RISALAH RAPAT</b>", styles["Heading2"]))
+elements.append(Spacer(1, 8))
         nomor = 1
         bagian = ""
         for line in isi_notulen.split("\n"):
