@@ -344,6 +344,7 @@ if st.button("Export PDF"):
         elements.append(Spacer(1, 4))  # sedikit diperbesar biar rapi
         nomor = 1
         bagian = ""
+        isi_notulen = isi_notulen.replace("\n\n", "\n")
         for line in isi_notulen.split("\n"):
 
             line = line.strip()
