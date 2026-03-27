@@ -307,10 +307,27 @@ if st.button("Export PDF"):
         elements = []
 
         styles = getSampleStyleSheet() 
+        for line in isi_notulen.split("\n"):
 
-        elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Title"]))
-        elements.append(Spacer(1, 10))
-0
+            line = line.strip()
+
+            if line.startswith("I.") or line.startswith("II.") or line.startswith("III.") or line.startswith("IV."):
+                elements.append(Spacer(1, 10))
+                elements.append(Paragraph(f"<b>{line}</b>", styles["Heading2"]))
+                elements.append(Spacer(1, 6))
+
+            elif line[:2].isdigit():
+                elements.append(Paragraph(line, styles["Normal"]))
+                elements.append(Spacer(1, 4))
+
+            elif line == "":
+                elements.append(Spacer(1, 8))
+
+            else:
+                elements.append(Paragraph(line, styles["Normal"]))
+                elements.append(Spacer(1, 6))
+
+
 
         doc.build(elements)
 
