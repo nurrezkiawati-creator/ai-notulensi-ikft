@@ -402,12 +402,12 @@ if st.button("Export PDF"):
             "Sekretaris Direktorat Jenderal",
             styles["Right"]
 ))
-        def add_border(canvas, doc):
+        def add_border(canvas, doc):   ✅ harus mentok kiri
             canvas.saveState()
             canvas.setLineWidth(1)
-            canvas.rect(30, 30, 535, 780)  # posisi kotak
+            canvas.rect(30, 30, 535, 780)
             canvas.restoreState()
-        
+                
         doc.build(elements, onFirstPage=add_border, onLaterPages=add_border)        
 
         st.download_button(
