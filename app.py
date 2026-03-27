@@ -341,13 +341,22 @@ if st.button("Export PDF"):
         elements.append(Spacer(1, 12))
         
         elements.append(Paragraph("<b>RISALAH RAPAT</b>", styles["Heading2"]))
-        elements.append(Spacer(1, 10))
+        elements.append(Spacer(1, 10))  # sedikit diperbesar biar rapi
         nomor = 1
         bagian = ""
         for line in isi_notulen.split("\n"):
 
             line = line.strip()
             line = line.replace("**", "")
+            # HAPUS HEADER DUPLIKAT
+            if line.startswith("NOTULA RAPAT") or \
+               line.startswith("Tanggal") or \
+               line.startswith("Waktu") or \
+               line.startswith("Tempat") or \
+               line.startswith("Perihal") or \
+               line.startswith("Pimpinan") or \
+               line.startswith("RISALAH RAPAT"):
+                continue
             # Deteksi bagian utama
             if line.startswith("I."):
                 bagian = "umum"
