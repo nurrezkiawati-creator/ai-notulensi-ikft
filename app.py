@@ -467,8 +467,7 @@ if st.button("Export PDF"):
         onFirstPage=lambda c, d: (draw_header(c, d), add_border(c, d)),
         onLaterPages=add_border
     )       
-
-        st.download_button(
+   st.download_button(
             "Download PDF",
             buffer.getvalue(),
             file_name="notula_rapat.pdf",
