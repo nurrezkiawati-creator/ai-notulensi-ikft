@@ -462,7 +462,7 @@ if st.button("Export PDF"):
             )
             canvas.restoreState()
                 
-        doc.build(
+    doc.build(
         elements,
         onFirstPage=lambda c, d: (draw_header(c, d), add_border(c, d)),
         onLaterPages=add_border
