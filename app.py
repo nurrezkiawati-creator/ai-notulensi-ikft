@@ -445,27 +445,11 @@ if st.button("Export PDF"):
         canvas.line(40, 752, 555, 752)
     
         canvas.restoreState()
-
-    def add_border(canvas, doc):
-            canvas.saveState()
-            canvas.setLineWidth(1)
-        
-        
-            # gunakan margin doc
-            width, height = A4
-        
-            canvas.rect(
-                doc.leftMargin - 10,
-                doc.bottomMargin - 10,
-                width - doc.leftMargin - doc.rightMargin + 20,
-                height - doc.topMargin - doc.bottomMargin + 20
-            )
-            canvas.restoreState()
                 
     doc.build(
         elements,
-        onFirstPage=lambda c, d: (draw_header(c, d), add_border(c, d)),
-        onLaterPages=add_border
+        onFirstPage=draw_header,
+        onLaterPages=draw_header
     )       
     st.download_button(
             "Download PDF",
