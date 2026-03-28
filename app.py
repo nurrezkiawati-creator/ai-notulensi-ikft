@@ -315,7 +315,14 @@ if st.button("Export PDF"):
         st.warning("Silakan generate notulen terlebih dahulu")
     else:
         buffer = io.BytesIO()
-        doc = SimpleDocTemplate(buffer, pagesize=A4)
+        doc = SimpleDocTemplate(
+        buffer,
+        pagesize=A4,
+        leftMargin=40,
+        rightMargin=40,
+        topMargin=100,   # kasih ruang header
+        bottomMargin=60
+    )
         elements = []
 
         styles = getSampleStyleSheet()
@@ -324,7 +331,14 @@ if st.button("Export PDF"):
         from reportlab.lib.styles import ParagraphStyle
         
         styles.add(ParagraphStyle(name='Center', alignment=TA_CENTER))
-        styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
+        styles.add(ParagraphStyle(
+            name='Justify',
+            alignment=TA_JUSTIFY,
+            leftIndent=0,
+            rightIndent=0,
+            spaceAfter=6,
+            leading=14
+        ))
         from reportlab.lib.enums import TA_RIGHT
         styles.add(ParagraphStyle(name='Right', alignment=TA_RIGHT))
         # ================= TABEL INFO RAPAT =================
@@ -350,24 +364,7 @@ if st.button("Export PDF"):
         ]))
         # ================= HEADER KOP RESMI =================
 
-        logo = Image("logo.png", width=1.2*inch, height=1.2*inch)
-        
-        header_text = [
-            Paragraph("<b>DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL</b>", styles["Normal"]),
-            Paragraph("Jalan Jenderal Gatot Subroto Kav 52-53 Jakarta 12950 Kotak Pos : 4720 JKTM", styles["Normal"]),
-            Paragraph("Telp : 5255509", styles["Normal"]),
-        ]
-        
-        header_table = Table([
-            [logo, header_text]
-        ], colWidths=[90, 400])
-        
-        header_table.setStyle(TableStyle([
-            ('VALIGN', (0,0), (-1,-1), 'MIDDLE'),
-        ]))
-        
-        elements.append(header_table)
-        elements.append(Spacer(1, 6))
+
         elements.append(Paragraph("<b>NOTULA RAPAT</b>", styles["Center"]))
         elements.append(Spacer(1, 14))
         
@@ -428,14 +425,48 @@ if st.button("Export PDF"):
         elements.append(Spacer(1, 20))
         elements.append(Paragraph("Sekretaris Direktorat Jenderal", styles["Right"]))
         
+       def draw_header(canvas, doc):
+        canvas.saveState()
+    
+        # logo
+        canvas.drawImage("logo.png", 40, 770, width=50, height=50)
+    
+        # judul
+        canvas.setFont("Helvetica-Bold", 10)
+        canvas.drawCentredString(300, 800, "KEMENTERIAN PERINDUSTRIAN REPUBLIK INDONESIA")
+        canvas.drawCentredString(300, 785, "DIREKTORAT JENDERAL INDUSTRI KIMIA, FARMASI DAN TEKSTIL")
+    
+        # alamat
+        canvas.setFont("Helvetica", 9)
+        canvas.drawCentredString(300, 770, "Jl. Jenderal Gatot Subroto Kav. 52-53 Jakarta 12950")
+    
+        # garis
+        canvas.line(40, 755, 555, 755)
+        canvas.line(40, 752, 555, 752)
+    
+        canvas.restoreState()
+
         def add_border(canvas, doc):
             canvas.saveState()
             canvas.setLineWidth(1)
-         
-            canvas.rect(30, 30, 535, 700)
+        
+        
+            # gunakan margin doc
+            width, height = A4
+        
+            canvas.rect(
+                doc.leftMargin - 10,
+                doc.bottomMargin - 10,
+                width - doc.leftMargin - doc.rightMargin + 20,
+                height - doc.topMargin - doc.bottomMargin + 20
+            )
             canvas.restoreState()
                 
-        doc.build(elements, onFirstPage=add_border, onLaterPages=add_border)        
+        doc.build(
+        elements,
+        onFirstPage=lambda c, d: (draw_header(c, d), add_border(c, d)),
+        onLaterPages=add_border
+    )       
 
         st.download_button(
             "Download PDF",
