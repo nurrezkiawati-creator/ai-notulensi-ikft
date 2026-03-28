@@ -446,7 +446,7 @@ if st.button("Export PDF"):
     
         canvas.restoreState()
 
-        def add_border(canvas, doc):
+    def add_border(canvas, doc):
             canvas.saveState()
             canvas.setLineWidth(1)
         
