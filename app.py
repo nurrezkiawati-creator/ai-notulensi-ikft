@@ -318,7 +318,12 @@ if st.button("Export PDF"):
         doc = SimpleDocTemplate(buffer, pagesize=A4)
         elements = []
 
-        styles = getSampleStyleSheet() 
+        styles = getSampleStyleSheet()
+        
+        from reportlab.lib.enums import TA_CENTER
+        from reportlab.lib.styles import ParagraphStyle
+        
+        styles.add(ParagraphStyle(name='Center', alignment=TA_CENTER))
         styles.add(ParagraphStyle(name='Justify', alignment=TA_JUSTIFY))
         from reportlab.lib.enums import TA_RIGHT
         styles.add(ParagraphStyle(name='Right', alignment=TA_RIGHT))
