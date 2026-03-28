@@ -429,7 +429,7 @@ if st.button("Export PDF"):
         canvas.saveState()
     
         # logo
-        canvas.drawImage("logo.png", 40, 770, width=50, height=50)
+        canvas.drawImage("logo_fix.png", 40, 770, width=50, height=50)
     
         # judul
         canvas.setFont("Helvetica-Bold", 10)
