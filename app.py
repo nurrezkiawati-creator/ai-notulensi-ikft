@@ -425,7 +425,7 @@ if st.button("Export PDF"):
         elements.append(Spacer(1, 20))
         elements.append(Paragraph("Sekretaris Direktorat Jenderal", styles["Right"]))
         
-       def draw_header(canvas, doc):
+def draw_header(canvas, doc):
         canvas.saveState()
     
         # logo
