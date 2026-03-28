@@ -428,11 +428,11 @@ if st.button("Export PDF"):
         elements.append(Spacer(1, 20))
         elements.append(Paragraph("Sekretaris Direktorat Jenderal", styles["Right"]))
         
-        
         def add_border(canvas, doc):
             canvas.saveState()
             canvas.setLineWidth(1)
-            canvas.rect(30, 30, 535, 780)
+         
+            canvas.rect(30, 30, 535, 700)
             canvas.restoreState()
                 
         doc.build(elements, onFirstPage=add_border, onLaterPages=add_border)        
