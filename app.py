@@ -4,7 +4,7 @@ st.write(os.listdir())
 from openai import OpenAI
 import json
 
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, image
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.platypus import Table, TableStyle
@@ -13,10 +13,6 @@ from reportlab.lib.units import inch
 from reportlab.platypus import Frame
 import io
 
-
-
-logo_path = os.path.join(os.path.dirname(__file__), "logo.png")
-logo = Image(logo_path, width=1.2*inch, height=1.2*inch)
 
 
 api_key = st.secrets["OPENAI_API_KEY"]
@@ -310,8 +306,9 @@ from reportlab.lib.styles import ParagraphStyle
 import io
 
 if st.button("Export PDF"):
+    logo_path = os.path.join(os.path.dirname(__file__), "logo.png")
+    logo = Image(logo_path, width=1.2*inch, height=1.2*inch)
   
-
     isi_notulen = st.session_state.get("hasil_notulen", "")
 
     if isi_notulen == "":
