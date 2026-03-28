@@ -11,6 +11,12 @@ from reportlab.lib.units import inch
 from reportlab.platypus import Frame
 import io
 
+st.write(os.listdir())
+
+logo_path = os.path.join(os.path.dirname(__file__), "logo.png")
+logo = Image(logo_path, width=1.2*inch, height=1.2*inch)
+
+
 api_key = st.secrets["OPENAI_API_KEY"]
 client = OpenAI(api_key=api_key)
 
